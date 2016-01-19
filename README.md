@@ -32,3 +32,7 @@ See `wmctile --help`
 ## Contribution
 
 Is welcome. You'll need to clone, `bundle install` and run `guard`. Happy hacking :)
+
+## Documentation
+
+Done in yard - http://www.rubydoc.info/github/mreq/wmctile/master.
