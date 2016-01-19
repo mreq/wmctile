@@ -2,6 +2,14 @@
 
 Window manager's best friend. In a gem.
 
+## Requirements
+
+Wmctile works with `wmctrl` and `xdotool`. To use it, install the appropriate packages. On Ubuntu it's as easy as running:
+
+```
+sudo apt-get install wmctrl xdotool
+```
+
 ## Installation
 
 Due to performance reasons of RVM, it's preferred to clone this repository and symlink the executable to your `$PATH`:
