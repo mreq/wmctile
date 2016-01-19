@@ -20,3 +20,7 @@ gem install wmctile
 ## Usage
 
 See `wmctile --help`
+
+## Contribution
+
+Is welcome. You'll need to clone, `bundle install` and run `guard`. Happy hacking :)
