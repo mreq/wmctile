@@ -10,6 +10,12 @@ Gem::Specification.new do |s|
   s.homepage    = 'http://mreq.github.io/wmctile'
   s.license     = 'GPL-3'
   s.executables << 'wmctile'
+  [
+    'minitest', 'minitest-reporters', 'yard', 'pry', 'pry-byebug',
+    'guard', 'guard-minitest', 'guard-rubocop', 'guard-yard'
+  ].each do |dev_dep|
+    s.add_development_dependency dev_dep
+  end
   s.post_install_message = <<-eos
 Thanks for installing wmctile. Make sure, you have the following dependencies installed on your system:
 
