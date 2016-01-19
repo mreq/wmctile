@@ -1,0 +1,9 @@
+Metrics/LineLength:
+  Max: 9999
+
+Metrics/MethodLength:
+  Max: 50
+
+Lint/Debugger:
+  Exclude:
+    - 'bin/console'

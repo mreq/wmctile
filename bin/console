@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+require 'pry'
+require_relative '../lib/wmctile'
+
+windows = []
+
+`wmctrl -lx | grep -v ' -1 ' | awk '{ print $1 }'`.chomp.split("\n").map do |id|
+  windows << Wmctile::Window.new({}, id)
+end
+
+binding.pry
+
+# Need for pry to work (see https://github.com/deivid-rodriguez/pry-byebug/issues/45)
+puts 'Returning from console.'

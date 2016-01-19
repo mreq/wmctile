@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+require 'optparse'
+require_relative '../lib/wmctile'
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = 'Usage: wmctile [options] [window_strings]...'
+
+  opts.on('--switch-to', 'Switch to target window\'s workspace and focus it.') { |o| options[:switch_to] = o }
+  opts.on('--summon', 'Summon target window to current workspace and focus it.') { |o| options[:summon] = o }
+  opts.on('--shade', 'Shade (minimize) a window.') { |o| options[:shade] = o }
+  opts.on('--unshade', 'Unshade a window.') { |o| options[:unshade] = o }
+
+  opts.on('-a', '--active-window', 'Use the active window instead of [window_strings].') { |o| options[:use_active_window] = o }
+  opts.on('-c', '--current-workspace', 'Search for windows only in the current workspace.') { |o| options[:current_workspace] = o }
+  opts.on('-x [CMD]', '--exec [CMD]', 'Run a command when no window matching window_strings is found.') { |o| options[:exec] = o }
+end.parse!
+
+begin
+  Wmctile::Router.new options, ARGV
+rescue StandardError => e
+  `if which notify-send; then notify-send -i 'error' 'wmctile' '#{e}'; else echo '#{e}'; fi`
+end
