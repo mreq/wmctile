@@ -30,6 +30,7 @@ module Wmctile
     #
     # Creates a new window based on @arguments and @window_strings.
     # If no window is found, checks for the -x/--exec argument. If present, executes it.
+    # If there's no -x command and a window is not found, raises an error.
     #
     # @param [Integer] index index of the window from matching windows array
     #
@@ -45,9 +46,10 @@ module Wmctile
       if @arguments[:exec]
         # Exec the command
         puts "Executing command: #{@arguments[:exec]}"
-        `#{@arguments[:exec]} &`
+        system "#{@arguments[:exec]} &"
+      else
+        raise Errors::WindowNotFound, @window_strings[index]
       end
-      raise Errors::WindowNotFound, @window_strings[index]
     end
   end
 end

@@ -91,6 +91,3 @@ DEPENDENCIES
   pry-byebug
   wmctile!
   yard
-
-BUNDLED WITH
-   1.10.6

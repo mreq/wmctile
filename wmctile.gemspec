@@ -11,8 +11,8 @@ Gem::Specification.new do |s|
   s.license     = 'GPL-3'
   s.executables << 'wmctile'
   %w(
-    minitest minitest-reporters yard pry pry-byebug
-    guard guard-minitest guard-rubocop guard-yard
+    minitest minitest-reporters pry pry-byebug
+    guard guard-minitest guard-rubocop
   ).each do |dev_dep|
     s.add_development_dependency dev_dep
   end

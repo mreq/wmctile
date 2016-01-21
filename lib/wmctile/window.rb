@@ -1,6 +1,7 @@
 module Wmctile
   #
-  # Window is the core element of wmctile. It is described by an id, which has to be fetched from a window_string.
+  # Window is the core element of wmctile.
+  # It is described by an id, which has to be fetched from a window_string.
   #
   class Window
     #
