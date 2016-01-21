@@ -119,5 +119,16 @@ module Wmctile
         system "wmctrl -ir #{@id} -b remove,shaded"
       end
     end
+
+    #
+    # Maximize or unmaximize a window.
+    #
+    # @param [Boolean] should_maximize
+    #
+    # @return [void]
+    #
+    def toggle_maximized(should_maximize = true)
+      system "wmctrl -ir #{@id} -b #{should_maximize ? 'add' : 'remove'},maximized_vert,maximized_horz"
+    end
   end
 end

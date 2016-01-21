@@ -24,6 +24,10 @@ module Wmctile
         window.toggle_shaded(true)
       elsif arguments[:unshade]
         window.toggle_shaded(false)
+      elsif arguments[:maximize]
+        window.toggle_maximized(true)
+      elsif arguments[:unmaximize]
+        window.toggle_maximized(false)
       end
     end
 

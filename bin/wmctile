@@ -10,6 +10,8 @@ OptionParser.new do |opts|
   opts.on('--summon', 'Summon target window to current workspace and focus it.') { |o| options[:summon] = o }
   opts.on('--shade', 'Shade (minimize) a window.') { |o| options[:shade] = o }
   opts.on('--unshade', 'Unshade a window.') { |o| options[:unshade] = o }
+  opts.on('--maximize', 'Maximize a window.') { |o| options[:maximize] = o }
+  opts.on('--unmaximize', 'Unmaximize a window.') { |o| options[:unmaximize] = o }
 
   opts.on('-a', '--active-window', 'Use the active window instead of [window_strings].') { |o| options[:use_active_window] = o }
   opts.on('-c', '--current-workspace', 'Search for windows only in the current workspace.') { |o| options[:current_workspace] = o }
