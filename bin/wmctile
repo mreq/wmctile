@@ -13,7 +13,7 @@ OptionParser.new do |opts|
 
   opts.on('-a', '--active-window', 'Use the active window instead of [window_strings].') { |o| options[:use_active_window] = o }
   opts.on('-c', '--current-workspace', 'Search for windows only in the current workspace.') { |o| options[:current_workspace] = o }
-  opts.on('-x [CMD]', '--exec [CMD]', 'Run a command when no window matching window_strings is found.') { |o| options[:exec] = o }
+  opts.on('-x [CMD]', '--exec [CMD]', 'Run a command when no window matching [window_strings] is found.') { |o| options[:exec] = o }
 end.parse!
 
 begin

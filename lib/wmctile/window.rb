@@ -6,7 +6,6 @@ module Wmctile
     #
     # Window init function. Tries to find an id.
     #
-    #
     # @param [Hash] arguments command line options
     # @param [String] window_string command line string given
     #
@@ -39,7 +38,6 @@ module Wmctile
     #
     # Filters out @matching_windows so that only the ones on current_workspace remain.
     #
-    #
     # @return [Array] @matching_windows
     #
     def filter_out_workspaces
@@ -48,7 +46,6 @@ module Wmctile
 
     #
     # Takes the @matching_line and extracts @id, @workspace and @wm_class
-    #
     #
     # @return [void]
     #
@@ -59,6 +56,13 @@ module Wmctile
       @wm_class = parts[2]
     end
 
+    #
+    # Takes all the @matching_windows and finds the relevant one.
+    # If the window is the same class as the current one, it loops to find the next one.
+    # If the window is of a different class, it simply takes the first one.
+    #
+    # @return [void]
+    #
     def filter_more_matching_windows
       ids = @matching_windows.map { |matching_window| matching_window.match(/^(\w+)\s/)[1] }
       target_index = 0
@@ -70,13 +74,11 @@ module Wmctile
           target_index = i + 1
         end
       end
-      print(target_index)
       @matching_line = @matching_windows[target_index]
     end
 
     #
     # Switch to window's workspace and focus it.
-    #
     #
     # @return [void]
     #
@@ -87,7 +89,6 @@ module Wmctile
 
     #
     # Summon a window to current workspace and focus it.
-    #
     #
     # @return [void]
     #

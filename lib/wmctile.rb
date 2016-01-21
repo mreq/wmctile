@@ -15,7 +15,6 @@ module Wmctile
   #
   # Fetches the current workspace number from wmctrl.
   #
-  #
   # @return [String] Current workspace number.
   #
   def self.current_workspace
@@ -25,7 +24,6 @@ module Wmctile
 
   #
   # Fetches the current window id.
-  #
   #
   # @return [String] Current window id.
   #
