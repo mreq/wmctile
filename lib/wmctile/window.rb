@@ -85,7 +85,7 @@ module Wmctile
     #
     def switch_to
       return unless @id
-      `wmctrl -ia #{@id}`
+      system "wmctrl -ia #{@id}"
     end
 
     #
@@ -95,7 +95,7 @@ module Wmctile
     #
     def summon
       return unless @id
-      `wmctrl -iR #{@id}`
+      system "wmctrl -iR #{@id}"
     end
 
     #
@@ -111,12 +111,12 @@ module Wmctile
       if should_shade
         begin
           # Use xdotool if possible
-          `xdotool windowminimize #{@id}`
+          system "xdotool windowminimize #{@id}"
         rescue
-          `wmctrl -ir #{@id} -b add,shaded`
+          system "wmctrl -ir #{@id} -b add,shaded"
         end
       else
-        `wmctrl -ir #{@id} -b remove,shaded`
+        system "wmctrl -ir #{@id} -b remove,shaded"
       end
     end
   end
