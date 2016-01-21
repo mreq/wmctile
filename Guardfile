@@ -3,10 +3,6 @@ guard :rubocop do
   watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }
 end
 
-guard :yard do
-  watch(/.+\.rb$/)
-end
-
 guard :minitest do
   watch(%r{^spec/(.*)_spec\.rb$})
   watch(%r{^lib/(.+\/)?(.+)\.rb$})  { |m| "spec/#{m[2]}_spec.rb" }
