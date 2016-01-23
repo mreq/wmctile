@@ -3,6 +3,19 @@
 #
 module Wmctile
   #
+  # Notifies the user. Uses notify-send, when available. Otherwise falls back to echo.
+  #
+  # @param [String] message Message to be displayed.
+  # @param [String] title Optional notify-send title.
+  # @param [String] icon Icon to be displayed in the notification.
+  #
+  # @return [void]
+  #
+  def self.notify(message, title = 'wmctile', icon = 'error')
+    system "if which notify-send > /dev/null; then notify-send -i '#{icon}' '#{title}' '#{message}'; else echo '#{message}'; fi"
+  end
+
+  #
   # Fetches windows from wcmtrl.
   #
   # @return [Array] Array of windows.

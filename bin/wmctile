@@ -21,5 +21,5 @@ end.parse!
 begin
   Wmctile::Router.new options, ARGV
 rescue StandardError => e
-  `if which notify-send; then notify-send -i 'error' 'wmctile' '#{e}'; else echo '#{e}'; fi`
+  Wmctile.notify e
 end
