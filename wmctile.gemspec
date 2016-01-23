@@ -26,6 +26,8 @@ On Ubuntu it's as easy as running:
 
 sudo apt-get install wmctrl xdotool
 
+To be able to work with menus (not required), you'll also need either rofi or dmenu.
+
 If you have that, run:
 
 wmctile --help

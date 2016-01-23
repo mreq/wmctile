@@ -10,6 +10,8 @@ Wmctile works with `wmctrl` and `xdotool`. To use it, install the appropriate pa
 sudo apt-get install wmctrl xdotool
 ```
 
+To be able to work with menus (not required), you'll also need either [rofi](https://davedavenport.github.io/rofi/) or [dmenu](http://tools.suckless.org/dmenu/).
+
 ## Installation
 
 Due to performance reasons of RVM, it's preferred to clone this repository and symlink the executable to your `$PATH`:
