@@ -9,10 +9,12 @@ module Wmctile
     #
     # @param [Array] items Array of options for the menu.
     # @param [Integer] items_to_select Number of options to be selected.
+    # @param [String] prompt Prompt for rofi.
     #
-    def initialize(items, items_to_select = 1)
+    def initialize(items, items_to_select = 1, prompt = 'wmctile')
       @items = items
       @items_to_select = items_to_select
+      @prompt = prompt
       select_input_method
       puts grab_input
     end
@@ -26,7 +28,7 @@ module Wmctile
     def select_input_method
       @has_rofi = executable? 'rofi'
       if @has_rofi
-        @executable = 'rofi -dmenu -p "wmctile: "'
+        @executable = 'rofi -dmenu -p "#{@prompt}: "'
       else
         @has_dmenu = executable? 'dmenu'
         @executable = 'dmenu' if @has_dmenu
