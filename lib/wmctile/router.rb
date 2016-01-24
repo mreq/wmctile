@@ -11,28 +11,34 @@ module Wmctile
     # @param [Array] window_strings ARGV array
     #
     def initialize(arguments, window_strings)
-      return unless window_strings.count
-
       @arguments = arguments
       @window_strings = window_strings
 
-      if arguments[:switch_to]
-        window.switch_to
-      elsif arguments[:summon]
-        window.summon
-      elsif arguments[:shade]
-        window.toggle_shaded(true)
-      elsif arguments[:unshade]
-        window.toggle_shaded(false)
-      elsif arguments[:maximize]
-        window.toggle_maximized(true)
-      elsif arguments[:unmaximize]
-        window.toggle_maximized(false)
-      elsif arguments[:move_to_workspace]
-        window.move_to_workspace(arguments[:move_to_workspace])
-      elsif arguments[:follow_to_workspace]
-        window.move_to_workspace(arguments[:follow_to_workspace])
-        switch_to_workspace(arguments[:follow_to_workspace])
+      if @window_strings.count > 0 || @arguments[:use_active_window]
+        if arguments[:switch_to]
+          window.switch_to
+        elsif arguments[:summon]
+          window.summon
+        elsif arguments[:shade]
+          window.toggle_shaded(true)
+        elsif arguments[:unshade]
+          window.toggle_shaded(false)
+        elsif arguments[:maximize]
+          window.toggle_maximized(true)
+        elsif arguments[:unmaximize]
+          window.toggle_maximized(false)
+        elsif arguments[:move_to_workspace]
+          window.move_to_workspace(arguments[:move_to_workspace])
+        elsif arguments[:follow_to_workspace]
+          window.move_to_workspace(arguments[:follow_to_workspace])
+          # sleeps a bit so that the switch_to actually triggers correctly
+          sleep 0.01
+          window.switch_to
+        end
+      else
+        if arguments[:switch_to_workspace]
+          switch_to_workspace(arguments[:switch_to_workspace])
+        end
       end
     end
 
