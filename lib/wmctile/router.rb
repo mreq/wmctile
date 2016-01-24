@@ -28,6 +28,11 @@ module Wmctile
         window.toggle_maximized(true)
       elsif arguments[:unmaximize]
         window.toggle_maximized(false)
+      elsif arguments[:move_to_workspace]
+        window.move_to_workspace(arguments[:move_to_workspace])
+      elsif arguments[:follow_to_workspace]
+        window.move_to_workspace(arguments[:follow_to_workspace])
+        switch_to_workspace(arguments[:follow_to_workspace])
       end
     end
 
@@ -54,6 +59,22 @@ module Wmctile
       else
         raise Errors::WindowNotFound, @window_strings[index]
       end
+    end
+
+    #
+    # Switch to target_workspace.
+    #
+    # @param [String] target_workspace Target workspace index or "next"/"previous".
+    #
+    # @return [void]
+    #
+    def switch_to_workspace(target_workspace)
+      if target_workspace == 'next'
+        target_workspace = Wmctile.current_workspace + 1
+      elsif target_workspace == 'previous'
+        target_workspace = Wmctile.current_workspace - 1
+      end
+      system "wmctrl -s #{target_workspace}"
     end
   end
 end

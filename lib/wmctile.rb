@@ -31,7 +31,7 @@ module Wmctile
   # @return [String] Current workspace number.
   #
   def self.current_workspace
-    @current_workspace ||= `wmctrl -d | grep '\*' | cut -d' ' -f 1`.chomp
+    @current_workspace ||= `wmctrl -d | grep '\*' | cut -d' ' -f 1`.chomp.to_i
     @current_workspace
   end
 

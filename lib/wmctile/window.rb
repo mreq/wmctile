@@ -130,5 +130,21 @@ module Wmctile
     def toggle_maximized(should_maximize = true)
       system "wmctrl -ir #{@id} -b #{should_maximize ? 'add' : 'remove'},maximized_vert,maximized_horz"
     end
+
+    #
+    # Moves the window to workspace given in @arguments.
+    #
+    # @param [String] target_workspace Target workspace index or "next"/"previous".
+    #
+    # @return [void]
+    #
+    def move_to_workspace(target_workspace)
+      if target_workspace == 'next'
+        target_workspace = Wmctile.current_workspace + 1
+      elsif target_workspace == 'previous'
+        target_workspace = Wmctile.current_workspace - 1
+      end
+      system "wmctrl -ir #{@id} -t #{target_workspace}"
+    end
   end
 end
