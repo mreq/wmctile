@@ -47,6 +47,7 @@ module Wmctile
 end
 
 require_relative 'wmctile/errors'
+require_relative 'wmctile/memory'
 require_relative 'wmctile/menu'
 require_relative 'wmctile/router'
 require_relative 'wmctile/window'
