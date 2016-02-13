@@ -12,10 +12,10 @@ OptionParser.new do |opts|
   opts.on('--unshade', 'Unshade a window.') { |o| options[:unshade] = o }
   opts.on('--maximize', 'Maximize a window.') { |o| options[:maximize] = o }
   opts.on('--unmaximize', 'Unmaximize a window.') { |o| options[:unmaximize] = o }
-  opts.on('--move-to-workspace [workspace]', 'Moves a window to the given workspace number. Accepts "next" and "previous" or a number.') { |o| options[:move_to_workspace] = o }
-  opts.on('--follow-to-workspace [workspace]', 'Moves a window to the given workspace number and switches to that workspace. Accepts "next" and "previous" or a number.') { |o| options[:follow_to_workspace] = o }
+  opts.on('--move-to-workspace [workspace]', 'Moves a window to the given workspace number. Accepts "next", "previous" and "history" or a number.') { |o| options[:move_to_workspace] = o }
+  opts.on('--follow-to-workspace [workspace]', 'Moves a window to the given workspace number and switches to that workspace. Accepts "next", "previous" and "history" or a number.') { |o| options[:follow_to_workspace] = o }
 
-  opts.on('--switch-to-workspace [workspace]', 'Switches to a workspace. Accepts "next" and "previous" or a number.') { |o| options[:switch_to_workspace] = o }
+  opts.on('--switch-to-workspace [workspace]', 'Switches to a workspace. Accepts "next", "previous" and "history" or a number.') { |o| options[:switch_to_workspace] = o }
 
   opts.on('-a', '--active-window', 'Use the active window instead of [window_strings].') { |o| options[:use_active_window] = o }
   opts.on('-c', '--current-workspace', 'Search for windows only in the current workspace.') { |o| options[:current_workspace] = o }

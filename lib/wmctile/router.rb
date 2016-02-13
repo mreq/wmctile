@@ -80,6 +80,9 @@ module Wmctile
         target_workspace = Wmctile.current_workspace + 1
       elsif target_workspace == 'previous'
         target_workspace = Wmctile.current_workspace - 1
+      elsif target_workspace == 'history'
+        # must be -2 as -1 is the current workspace
+        target_workspace = Wmctile.memory.get(:workspace_history)[-2]
       end
       system "wmctrl -s #{target_workspace}"
       target_workspace
