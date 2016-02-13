@@ -44,6 +44,16 @@ module Wmctile
     @current_window_id ||= `wmctrl -a :ACTIVE: -v 2>&1`.chomp.split('Using window: ')[1]
     @current_window_id
   end
+
+  #
+  # Provides Memory access.
+  #
+  # @return [Memory] Current window id.
+  #
+  def self.memory
+    @memory ||= Memory.new
+    @memory
+  end
 end
 
 require_relative 'wmctile/errors'

@@ -25,7 +25,7 @@ module Wmctile
 
       if File.exist? @file_full
         file_contents = File.read(@file_full)
-        @memory = Yaml.load(file_contents)
+        @memory = YAML.load(file_contents)
       else
         create_file
       end
@@ -43,7 +43,6 @@ module Wmctile
         workspace_history: [Wmctile.current_workspace],
         workspace_data: {}
       }
-      write_memory
     end
 
     #
@@ -55,6 +54,54 @@ module Wmctile
       file = File.new @file_full, 'w'
       file.puts @memory.to_yaml
       file.close
+    end
+
+    #
+    # Gets a value from @memory.
+    #
+    # @param [Symbol] key Key to get.
+    #
+    # @return [String, Integer, Array, nil] Value from memory.
+    #
+    def get(key)
+      @memory[key]
+    end
+
+    #
+    # Sets a value to @memory.
+    #
+    # @param [Symbol] key Key to set.
+    #
+    # @return [void]
+    #
+    def set(key, value)
+      @memory[key] = value
+    end
+
+    #
+    # Deletes a value from @memory.
+    #
+    # @param [Symbol] key Key to delete.
+    #
+    # @return [void]
+    #
+    def delete(key)
+      @memory.delete(key)
+    end
+
+    #
+    # Appends a value to an array key.
+    #
+    # @param [Symbol] key The array key to append to
+    # @param [Value] value The value to be appended
+    #
+    # @return [void]
+    #
+    def append(key, value)
+      @memory[key] ||= []
+      @memory[key] << value
+      # trim
+      @memory[key] = @memory[key].last(10)
     end
   end
 end

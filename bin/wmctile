@@ -24,6 +24,7 @@ end.parse!
 
 begin
   Wmctile::Router.new options, ARGV
+  Wmctile.memory.write_memory
 rescue StandardError => e
   Wmctile.notify e
 end

@@ -37,7 +37,8 @@ module Wmctile
         end
       else
         if arguments[:switch_to_workspace]
-          switch_to_workspace(arguments[:switch_to_workspace])
+          number = switch_to_workspace(arguments[:switch_to_workspace])
+          Wmctile.memory.append(:workspace_history, number.to_i)
         end
       end
     end
@@ -72,7 +73,7 @@ module Wmctile
     #
     # @param [String] target_workspace Target workspace index or "next"/"previous".
     #
-    # @return [void]
+    # @return [Integer] Target workspace number
     #
     def switch_to_workspace(target_workspace)
       if target_workspace == 'next'
@@ -81,6 +82,7 @@ module Wmctile
         target_workspace = Wmctile.current_workspace - 1
       end
       system "wmctrl -s #{target_workspace}"
+      target_workspace
     end
   end
 end

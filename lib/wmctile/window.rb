@@ -128,6 +128,9 @@ module Wmctile
     # @return [void]
     #
     def toggle_maximized(should_maximize = true)
+      # do the exact opposite - need for some WMs (looking at you, XFWM4)
+      system "wmctrl -ir #{@id} -b #{should_maximize ? 'remove' : 'add'},maximized_vert,maximized_horz"
+      # do the right thing
       system "wmctrl -ir #{@id} -b #{should_maximize ? 'add' : 'remove'},maximized_vert,maximized_horz"
     end
 
