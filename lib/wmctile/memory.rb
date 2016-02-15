@@ -10,7 +10,6 @@ module Wmctile
     def initialize
       require 'yaml'
       read_file
-      puts @yaml_file
     end
 
     #
@@ -28,6 +27,7 @@ module Wmctile
         @memory = YAML.load(file_contents)
       else
         create_file
+        write_file
       end
     end
 
@@ -50,7 +50,7 @@ module Wmctile
     #
     # @return [void]
     #
-    def write_memory
+    def write_file
       file = File.new @file_full, 'w'
       file.puts @memory.to_yaml
       file.close
@@ -76,6 +76,7 @@ module Wmctile
     #
     def set(key, value)
       @memory[key] = value
+      trim(key) if @memory[key].is_a? Array
     end
 
     #
@@ -100,7 +101,17 @@ module Wmctile
     def append(key, value)
       @memory[key] ||= []
       @memory[key] << value
-      # trim
+      trim(key)
+    end
+
+    #
+    # Trims the array key, keeping last 10 values.
+    #
+    # @param [Symbol] key The array key to be trimmed
+    #
+    # @return [void]
+    #
+    def trim(key)
       @memory[key] = @memory[key].last(10)
     end
   end
